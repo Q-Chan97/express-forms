@@ -13,6 +13,7 @@ const validateUser = [
         .isLength({min: 1, max: 10}).withMessage(`Last name ${lengthErr}`),
     body("email").trim()
         .isEmail(),
+    body("age").trim(),
 ]
 
 export function usersListGet(req, res) {
@@ -38,8 +39,8 @@ export const usersCreatePost = [
                 errors: errors.array(),
             });
         }
-        const { firstName, lastName, email } = matchedData(req);
-        UsersStorage.addUser({ firstName, lastName, email });
+        const { firstName, lastName, email, age } = matchedData(req);
+        UsersStorage.addUser({ firstName, lastName, email, age });
         res.redirect("/");
     }
 ]
@@ -64,8 +65,8 @@ export const usersUpdatePost = [
                 errors: errors.array(),
             });
         };
-        const { firstName, lastName, email } = matchedData(req);
-        UsersStorage.updateUser(req.params.id, { firstName, lastName, email });
+        const { firstName, lastName, email, age } = matchedData(req);
+        UsersStorage.updateUser(req.params.id, { firstName, lastName, email, age });
         res.redirect("/");
     }
 ]

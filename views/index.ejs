@@ -14,6 +14,11 @@
                 <li>
                     ID: <%= user.id %>, Name: <%= user.firstName %> <%= user.lastName %>
                 </li>
+                <% if (user.age) { %>
+                    <li>
+                        <%= user.age %>
+                    </li>
+                <% } %>
                 <li>
                     Email: <%= user.email %>
                 </li>
