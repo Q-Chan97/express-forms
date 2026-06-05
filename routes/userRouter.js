@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { usersListGet, usersCreateGet, usersCreatePost, usersUpdateGet, usersUpdatePost, usersDeletePost } from "../controllers/userController.js";
+import { usersListGet, usersCreateGet, usersCreatePost, usersUpdateGet, usersUpdatePost, usersDeletePost, usersSearchGet } from "../controllers/userController.js";
 
 const userRouter = Router();
 
@@ -11,5 +11,7 @@ userRouter.get("/:id/update", usersUpdateGet);
 userRouter.post("/:id/update", usersUpdatePost);
 
 userRouter.post("/:id/delete", usersDeletePost);
+
+userRouter.get("/search", usersSearchGet);
 
 export default userRouter;

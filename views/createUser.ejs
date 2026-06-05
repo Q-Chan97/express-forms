@@ -27,5 +27,17 @@
 
         <button type="submit">Submit</button>
     </form>
+    <h2>Search for a user:</h2>
+    <form action="/search" method="get">
+        <label for="existingName">Check Name</label>
+        <input type="text" name="existingName" id="existingName">
+
+        <label for="existingEmail">Check Email</label>
+        <input type="email" name="existingEmail" id="existingEmail">
+
+        <button type="submit">Search for User</button>
+    </form>
+    <%- include("./partials/search.ejs") %>
+    <a href="/">Home</a>
 </body>
 </html>

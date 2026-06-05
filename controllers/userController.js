@@ -14,7 +14,7 @@ const validateUser = [
     body("email").trim()
         .isEmail(),
     body("age").trim()
-        .optional()
+        .optional({checkFalsy: true})
         .isInt({min: 18, max: 120}).withMessage("Age must be between 18 and 120"),
     body("bio").trim()
         .optional()
@@ -27,6 +27,13 @@ export function usersListGet(req, res) {
         users: UsersStorage.getUsers(),
     });
 };
+
+export function usersSearchGet(req, res) {
+    const { existingName, existingEmail } = req.query;
+    const userResults = UsersStorage.searchUsers(existingName, existingEmail);
+
+    res.render("createUser", { title: "Create User", results: userResults })
+}
 
 export function usersCreateGet(req, res) {
     res.render("createUser", {

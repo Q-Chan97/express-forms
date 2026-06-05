@@ -27,6 +27,17 @@ class UsersStorage {
     deleteUser(id) {
         delete this.storage[id];
     }
+
+    searchUsers(name, email) {
+        return Object.values(this.storage).filter((user) => {
+            // Case insensitive full name search
+            const fullUserName = `${user.firstName} ${user.lastName}`;
+            const nameMatch = name ? fullUserName.toLowerCase() === name.toLowerCase() : false;
+
+            const emailMatch = email ? user.email === email : false;
+            return nameMatch || emailMatch;
+        })
+    }
 }
 
 export default new UsersStorage;

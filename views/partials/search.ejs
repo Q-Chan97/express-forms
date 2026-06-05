@@ -1,0 +1,12 @@
+<% if (locals.results) { %>
+    <% results.forEach((result) => { %>
+        <ul>
+            <li>
+                <%= result.firstName %> <%= result.lastName %>
+            </li>
+            <li>
+                <%= result.email %>
+            </li>
+        </ul>
+    <% }) %>
+<% } %>
